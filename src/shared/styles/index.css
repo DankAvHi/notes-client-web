@@ -1,3 +1,6 @@
+@import url("./themes/index.css");
+@import url("./fonts/index.css");
+
 * {
     list-style: none;
     margin: 0;
@@ -11,10 +14,11 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
 
-    font-family: sans-serif;
+    font-family: Roboto;
     font-size: 1em;
     font-weight: 400;
     text-decoration: none;
+    color: var(--md-sys-color-on-background-dark);
 }
 
 a,
@@ -45,7 +49,7 @@ body,
 #root {
     min-height: 100svh;
 
-    background-color: #fff;
+    background-color: var(--md-sys-color-background-dark);
 }
 
 #root {
