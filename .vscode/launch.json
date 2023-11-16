@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Client Web SSR",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "pnpm run dev"
+        },
+        {
+            "name": "Client Web CSR",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:80"
+        },
+        {
+            "name": "Client Web Full",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "pnpm run dev",
+            "serverReadyAction": {
+                "pattern": "- Local:.+(https?://.+)",
+                "uriFormat": "%s",
+                "action": "debugWithEdge"
+            }
+        }
+    ]
+}
