@@ -1,5 +1,5 @@
 {
-    "extends": ["next/core-web-vitals", "@feature-sliced", "plugin:@conarti/feature-sliced/recommended"],
+    "extends": ["next/core-web-vitals", "plugin:@conarti/feature-sliced/recommended"],
     "parser": "@typescript-eslint/parser",
     "settings": {
         "import/resolver": {
