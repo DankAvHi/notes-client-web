@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import "@/shared/styles/index.css";
 import { SWRProvider } from "./providers";
+// eslint-disable-next-line import/no-internal-modules
+import "@/shared/styles/index.css";
 
 export const metadata: Metadata = {
     title: "Заметки",
