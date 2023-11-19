@@ -19,6 +19,14 @@
     font-weight: 400;
     text-decoration: none;
     color: var(--md-sys-color-on-background-dark);
+
+    transition: backdrop-filter 0.2s;
+}
+
+*:focus-visible {
+    outline: none;
+
+    backdrop-filter: brightness(0.9);
 }
 
 a,
