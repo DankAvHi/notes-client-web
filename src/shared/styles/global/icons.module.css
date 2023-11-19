@@ -1,0 +1,13 @@
+.default {
+    padding: 12px;
+
+    width: 48px;
+    height: 48px;
+}
+
+.defaultAsymetry {
+    padding: 8px;
+
+    width: 48px;
+    height: 48px;
+}
