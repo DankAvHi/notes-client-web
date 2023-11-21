@@ -2,7 +2,7 @@ export type Note = {
     id: number;
     createdAt: Date;
     updatedAt: Date;
-    title: string | null;
+    title?: string | null;
     content: string;
 };
 
