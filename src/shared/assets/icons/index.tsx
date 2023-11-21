@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //@ts-nocheck
 import CreateIconRaw from "./create.svg?component";
 import MenuIconRaw from "./menu.svg?component";
