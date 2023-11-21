@@ -1,0 +1,8 @@
+.NotesList {
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.Note {
+    max-width: 186px;
+}
