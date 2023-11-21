@@ -1,6 +1,8 @@
 {
-    "extends": ["next/core-web-vitals", "plugin:@conarti/feature-sliced/recommended"],
+    "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "next/core-web-vitals"],
     "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint", "@conarti/feature-sliced"],
+    "root": true,
     "settings": {
         "import/resolver": {
             "typescript": {
