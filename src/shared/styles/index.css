@@ -35,6 +35,14 @@ input[type="submit"] {
     cursor: pointer;
 }
 
+input,
+textarea,
+button,
+select,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
 img {
     user-drag: none;
     -webkit-user-drag: none;
