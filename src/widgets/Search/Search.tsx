@@ -7,7 +7,7 @@ export const Search = () => {
     return (
         <div className={styles.Search}>
             <button className={styles.menuButton} title="Меню" type="button">
-                <MenuIcon className={iconStyles.default} viewBox="0 0 24 24" />
+                <MenuIcon className={iconStyles.default} />
             </button>
             <input
                 className={`${materialTypographyStyles["body-large"]} ${styles.input}`}
@@ -17,7 +17,7 @@ export const Search = () => {
                 title="Поиск"
                 placeholder="Поиск заметок..."
             />
-            <SearchIcon className={iconStyles.defaultAsymetry} viewBox="0 0 24 24" />
+            <SearchIcon className={iconStyles.defaultAsymetry} />
         </div>
     );
 };
