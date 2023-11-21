@@ -1,0 +1,11 @@
+.FAB {
+    border-radius: 16px;
+
+    padding: 16px;
+    padding-right: 20px;
+
+    background-color: var(--md-sys-color-primary-container-dark);
+
+    align-items: center;
+    gap: 12px;
+}
