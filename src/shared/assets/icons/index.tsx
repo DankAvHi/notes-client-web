@@ -4,7 +4,7 @@ import CreateIconRaw from "./create.svg?component";
 import MenuIconRaw from "./menu.svg?component";
 import SearchIconRaw from "./search.svg?component";
 
-type Icon = (props: { className: string; viewBox?: string }) => JSX.Element;
+type Icon = (props: { className?: string; viewBox?: string }) => JSX.Element;
 
 const defaultViewBox = "0 0 24 24";
 
