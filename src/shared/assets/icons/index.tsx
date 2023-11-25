@@ -3,6 +3,7 @@
 import CreateIconRaw from "./create.svg?component";
 import MenuIconRaw from "./menu.svg?component";
 import SearchIconRaw from "./search.svg?component";
+import ArrowBackRaw from "./arrow_back.svg?component";
 
 type Icon = (props: { className?: string; viewBox?: string }) => JSX.Element;
 
@@ -11,5 +12,6 @@ const defaultViewBox = "0 0 24 24";
 const CreateIcon: Icon = (props) => <CreateIconRaw viewBox={defaultViewBox} {...props} />;
 const MenuIcon: Icon = (props) => <MenuIconRaw viewBox={defaultViewBox} {...props} />;
 const SearchIcon: Icon = (props) => <SearchIconRaw viewBox={defaultViewBox} {...props} />;
+const ArrowBack: Icon = (props) => <ArrowBackRaw viewBox={defaultViewBox} {...props} />;
 
-export { CreateIcon, MenuIcon, SearchIcon };
+export { CreateIcon, MenuIcon, SearchIcon, ArrowBack };
