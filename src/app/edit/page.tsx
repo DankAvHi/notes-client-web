@@ -1,9 +1,9 @@
 import styles from "./page.module.css";
 
-export default function New() {
+export default function Edit() {
     return (
         <>
-            <main className={styles.new}></main>
+            <main className={styles.edit}></main>
         </>
     );
 }
