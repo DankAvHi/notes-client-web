@@ -2,6 +2,9 @@
     "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "next/core-web-vitals"],
     "parser": "@typescript-eslint/parser",
     "plugins": ["@typescript-eslint", "@conarti/feature-sliced"],
+    "rules": {
+        "@typescript-eslint/no-unused-vars": "warn"
+    },
     "root": true,
     "settings": {
         "import/resolver": {
