@@ -8,20 +8,28 @@ import { useGetNotes } from "@/entities/note";
 export const NotesList = () => {
     const { data, error, isLoading } = useGetNotes();
 
-    if (error) {
-        return <p>{`Ошибка при загрузке данных`}</p>;
-    }
-
     return (
         <div className={styles.NotesList}>
-            {isLoading
-                ? `Загрузка`
-                : data.map((note) => (
-                      <Card className={styles.Note} key={note.id}>
-                          <h3 className={typographyStyles["title-medium"]}>{note.title}</h3>
-                          <p className={typographyStyles["body-medium"]}>{note.content}</p>
-                      </Card>
-                  ))}
+            <div className={styles.wrapper}>
+                {isLoading ? (
+                    `Загрузка`
+                ) : error ? (
+                    <p>{`Ошибка при загрузке облачных заметок`}</p>
+                ) : (
+                    <>
+                        <p>{`Облачные заметки, ${data.length} штук:`}</p>
+                        {data.map((note) => (
+                            <Card className={styles.Note} key={note.id}>
+                                {note.title && <h3 className={typographyStyles["title-medium"]}>{note.title}</h3>}
+                                <p className={typographyStyles["body-medium"]}>{note.content}</p>
+                            </Card>
+                        ))}
+                    </>
+                )}
+            </div>
+            <div className={styles.wrapper}>
+                <p>{`Локальные заметки:`}</p>
+            </div>
         </div>
     );
 };
