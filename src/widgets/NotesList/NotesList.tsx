@@ -1,12 +1,12 @@
 "use client";
 
-import { Card } from "@/shared/ui";
 import styles from "./NotesList.module.css";
-import typographyStyles from "@/shared/styles/themes/material/typography.module.css";
+import { useGetNotes, useLocalNotes } from "@/entities/note";
 import { List } from "./List";
 
 export const NotesList = () => {
-    const { data, error, isLoading } = useGetNotes();
+    const { data: cloudNotes, error, isLoading } = useGetNotes();
+    const { notes: localNotes } = useLocalNotes();
 
     return (
         <div className={styles.NotesList}>
