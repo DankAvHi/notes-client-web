@@ -6,12 +6,20 @@ import { ArrowBack, Attachment, DeleteForever, PushPin } from "@/shared/assets/i
 import { useRouter } from "next/navigation";
 import typographyStyles from "@/shared/styles/themes/material/typography.module.css";
 import { useEditContext } from "./edit.provider";
+import { Note } from "@/shared/api";
+import { useLocalNotes } from "@/entities/note";
 
 export const TopBar = () => {
     const router = useRouter();
-    const { title } = useEditContext();
+    const { title, content } = useEditContext();
+    const { notes, setLocalNotes } = useLocalNotes();
 
-    const backButtonOnClickHandler = () => router.back();
+    const backButtonOnClickHandler = () => {
+        const id = notes.length > 0 ? notes.reduce((prev, cur) => (cur.id > prev.id ? cur : prev)).id + 1 : 0;
+        const note: Note = { id, title, content };
+        setLocalNotes([...notes, note]);
+        router.back();
+    };
 
     return (
         <header className={styles.TopBar}>
