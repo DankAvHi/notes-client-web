@@ -1,0 +1,1 @@
+export { useLocalNotes } from "./useLocalNotes";
