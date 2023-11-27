@@ -18,8 +18,8 @@ export const NotesList = () => {
                 ? `Загрузка`
                 : data.map((note) => (
                       <Card className={styles.Note} key={note.id}>
-                          <h3 className={typographyStyles["title-medium"]}>{note.title}</h3>
-                          <p className={typographyStyles["body-medium"]}>{note.content}</p>
+                          <h3 className={`${typographyStyles["title-medium"]} ${styles.text}`}>{note.title}</h3>
+                          <p className={`${typographyStyles["body-medium"]} ${styles.text}`}>{note.content}</p>
                       </Card>
                   ))}
         </div>
