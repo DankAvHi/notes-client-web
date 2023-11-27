@@ -3,7 +3,7 @@
 import { Card } from "@/shared/ui";
 import styles from "./NotesList.module.css";
 import typographyStyles from "@/shared/styles/themes/material/typography.module.css";
-import { useGetNotes } from "@/entities/note";
+import { List } from "./List";
 
 export const NotesList = () => {
     const { data, error, isLoading } = useGetNotes();
@@ -16,19 +16,11 @@ export const NotesList = () => {
                 ) : error ? (
                     <p>{`Ошибка при загрузке облачных заметок`}</p>
                 ) : (
-                    <>
-                        <p>{`Облачные заметки, ${data.length} штук:`}</p>
-                        {data.map((note) => (
-                            <Card className={styles.Note} key={note.id}>
-                                {note.title && <h3 className={typographyStyles["title-medium"]}>{note.title}</h3>}
-                                <p className={typographyStyles["body-medium"]}>{note.content}</p>
-                            </Card>
-                        ))}
-                    </>
+                    <List notes={cloudNotes} title={`Облачные заметки`} />
                 )}
             </div>
             <div className={styles.wrapper}>
-                <p>{`Локальные заметки:`}</p>
+                <List notes={localNotes} title={"Локальные заметки"} />
             </div>
         </div>
     );
