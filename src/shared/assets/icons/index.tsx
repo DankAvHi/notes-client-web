@@ -7,11 +7,22 @@ import ArrowBackRaw from "./arrow_back.svg?component";
 
 type Icon = (props: { className?: string; viewBox?: string }) => JSX.Element;
 
-const defaultViewBox = "0 0 24 24";
+const VB = "0 0 24 24";
 
-const CreateIcon: Icon = (props) => <CreateIconRaw viewBox={defaultViewBox} {...props} />;
-const MenuIcon: Icon = (props) => <MenuIconRaw viewBox={defaultViewBox} {...props} />;
-const SearchIcon: Icon = (props) => <SearchIconRaw viewBox={defaultViewBox} {...props} />;
-const ArrowBack: Icon = (props) => <ArrowBackRaw viewBox={defaultViewBox} {...props} />;
-
-export { CreateIcon, MenuIcon, SearchIcon, ArrowBack };
+const CreateIcon: Icon = (props) => {
+    const { className, ...iconProps } = props;
+    return <CreateIconRaw viewBox={VB} className={`${iconStyles.default} ${className}`} {...iconProps} />;
+};
+const MenuIcon: Icon = (props) => {
+    const { className, ...iconProps } = props;
+    return <MenuIconRaw viewBox={VB} className={`${iconStyles.default} ${className}`} {...iconProps} />;
+};
+const SearchIcon: Icon = (props) => {
+    const { className, ...iconProps } = props;
+    return <SearchIconRaw viewBox={VB} className={`${iconStyles.defaultTall} ${className}`} {...iconProps} />;
+};
+const ArrowBack: Icon = (props) => {
+    const { className, ...iconProps } = props;
+    return <ArrowBackRaw viewBox={VB} className={`${iconStyles.default} ${className}`} {...iconProps} />;
+};
+export { CreateIcon, MenuIcon, SearchIcon, ArrowBack, Attachment, DeleteForever, PushPin };
