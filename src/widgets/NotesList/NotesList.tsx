@@ -1,12 +1,12 @@
 "use client";
 
 import styles from "./NotesList.module.css";
-import { useGetNotes, useLocalNotes } from "@/entities/note";
+import { useGetNotes, useNotesLocal } from "@/entities/note";
 import { List } from "./List";
 
 export const NotesList = () => {
     const { data: cloudNotes, error, isLoading } = useGetNotes();
-    const { notes: localNotes } = useLocalNotes();
+    const { notes: localNotes } = useNotesLocal();
 
     return (
         <div className={styles.NotesList}>

@@ -1,2 +1,2 @@
 export { useGetNotes } from "./api";
-export { useLocalNotes } from "./model";
+export { useNotesLocal } from "./model";

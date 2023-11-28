@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { NOTES_LOCAL_STORAGE_NAME } from "./consts";
 import { Notes } from "@/shared/api";
 
-export const useLocalNotes = () => {
+export const useNotesLocal = () => {
     const [notes, setNotesState] = useState<Notes>([]);
 
     const getLocalNotes = useCallback(
