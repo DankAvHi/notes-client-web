@@ -24,3 +24,11 @@
 
 .actionIcon {
 }
+
+.pined {
+    color: var(--md-sys-color-primary-dark);
+}
+
+.deleted {
+    color: var(--md-sys-color-error-dark);
+}

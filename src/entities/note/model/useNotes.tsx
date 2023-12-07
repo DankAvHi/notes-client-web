@@ -13,7 +13,6 @@ export const useNotes = () => {
     const createNote = useCallback(
         async (newNote: NoteCreateInput) => {
             if (notes) {
-                console.log("a");
                 const { title, content } = newNote;
                 const id = notes.length > 0 ? notes.reduce((prev, cur) => (cur.id > prev.id ? cur : prev)).id + 1 : 0;
                 const newDate = new Date();
@@ -39,7 +38,6 @@ export const useNotes = () => {
     const updateNote = useCallback(
         async (updateNote: NoteUpdateInput) => {
             if (notes) {
-                console.log("b");
                 const newNotes = [...notes].map((note) => (note.id === updateNote.id ? updateNote : note));
                 setLocalNotes(newNotes);
             }

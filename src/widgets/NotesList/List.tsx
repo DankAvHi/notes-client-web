@@ -5,11 +5,12 @@ import { NoteCard } from "@/entities/note";
 
 export const List = (props: { notes: Notes }) => {
     const { notes } = props;
-    const pinnedNotes = notes.filter((note) => note.pinned && !note.deleted);
-    const defaultNotes = notes.filter((note) => !note.pinned && !note.deleted);
+    const normalNotes = notes.filter((note) => !note.deleted);
+    const pinnedNotes = normalNotes.filter((note) => note.pinned);
+    const defaultNotes = normalNotes.filter((note) => !note.pinned);
     return (
         <>
-            {notes.length > 0 ? (
+            {defaultNotes.length > 0 || pinnedNotes.length > 0 ? (
                 <>
                     {pinnedNotes.map((note) => (
                         <NoteCard note={note} key={`${note.id} ${note.createdAt}`} />

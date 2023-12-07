@@ -17,7 +17,7 @@ import { NoteCreateInput, NoteUpdateInput } from "@/entities/note";
 type EditContextType = {
     note: NoteCreateInput;
     setNote: Dispatch<SetStateAction<NoteCreateInput>>;
-    exitEditor: () => Promise<void>;
+    exitEditor: (isDeleted?: boolean) => Promise<void>;
 };
 
 const initialNote: NoteCreateInput = {
@@ -42,12 +42,19 @@ export const EditProvider = (props: EditProviderPropsType) => {
     const router = useRouter();
     const [note, setNote] = useState<NoteCreateInput>(initialNote);
 
-    const exitEditor = useCallback(async () => {
-        if ((note.title && note.title.length > 0) || note.content.length > 0) {
-            props.isNew ? createNote(note) : updateNote(note as NoteUpdateInput);
-        }
-        router.back();
-    }, [note, props.isNew, createNote, updateNote, router]);
+    const exitEditor = useCallback(
+        async (isDeleted: boolean = false) => {
+            if (isDeleted) {
+                updateNote({ ...note, deleted: true } as NoteUpdateInput);
+                return router.back();
+            }
+            if ((note.title && note.title.length > 0) || note.content.length > 0) {
+                props.isNew ? createNote(note) : updateNote(note as NoteUpdateInput);
+                return router.back();
+            }
+        },
+        [note, props.isNew, createNote, updateNote, router],
+    );
 
     const value = {
         note,
