@@ -1,9 +1,6 @@
 .NotesList {
-    gap: 16px;
-    flex-direction: column;
-}
+    width: 100%;
 
-.wrapper {
-    flex-wrap: wrap;
     gap: 8px;
+    flex-wrap: wrap;
 }

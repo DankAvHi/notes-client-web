@@ -1,0 +1,1 @@
+export { isUndefiend } from "./isUndefiend";

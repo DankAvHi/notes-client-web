@@ -1,1 +1,1 @@
-export { useNotesLocal } from "./useNotesLocal";
+export { useNotes } from "./useNotes";

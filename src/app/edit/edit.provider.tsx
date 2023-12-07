@@ -1,20 +1,67 @@
 "use client";
 
-import { ReactNode, useContext, useState } from "react";
-import { EditContext } from "./edit.context";
+import {
+    ReactNode,
+    useContext,
+    useEffect,
+    useState,
+    Dispatch,
+    SetStateAction,
+    createContext,
+    useCallback,
+} from "react";
+import { useNotesContext } from "../providers";
+import { useRouter } from "next/navigation";
+import { NoteCreateInput, NoteUpdateInput } from "@/entities/note";
 
-export const EditProvider = ({ children }: { children: ReactNode }) => {
-    const [title, setTitle] = useState<string>("");
-    const [content, setContent] = useState<string>("");
+type EditContextType = {
+    note: NoteCreateInput;
+    setNote: Dispatch<SetStateAction<NoteCreateInput>>;
+    exitEditor: () => Promise<void>;
+};
+
+const initialNote: NoteCreateInput = {
+    content: "",
+    title: "",
+    createdAt: new Date(),
+    pinned: false,
+    deleted: false,
+    attachments: [],
+};
+
+export const EditContext = createContext<EditContextType | undefined>(undefined);
+
+type EditProviderPropsType = {
+    isNew: boolean;
+    id: number | undefined;
+    children: ReactNode;
+};
+
+export const EditProvider = (props: EditProviderPropsType) => {
+    const { getNote, createNote, updateNote } = useNotesContext();
+    const router = useRouter();
+    const [note, setNote] = useState<NoteCreateInput>(initialNote);
+
+    const exitEditor = useCallback(async () => {
+        if ((note.title && note.title.length > 0) || note.content.length > 0) {
+            props.isNew ? createNote(note) : updateNote(note as NoteUpdateInput);
+        }
+        router.back();
+    }, [note, props.isNew, createNote, updateNote, router]);
 
     const value = {
-        title,
-        setTitle,
-        content,
-        setContent,
+        note,
+        setNote,
+        exitEditor,
     };
 
-    return <EditContext.Provider value={value}>{children}</EditContext.Provider>;
+    useEffect(() => {
+        if (!props.isNew && typeof props.id === "number") {
+            setNote(getNote(props.id) || initialNote);
+        }
+    }, [setNote, getNote, props]);
+
+    return <EditContext.Provider value={value}>{props.children}</EditContext.Provider>;
 };
 
 export const useEditContext = () => {

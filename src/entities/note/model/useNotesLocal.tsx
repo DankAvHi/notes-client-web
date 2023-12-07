@@ -1,22 +1,11 @@
-import { useCallback, useEffect, useState } from "react";
+"use client";
+
+import { Notes } from "..";
 import { NOTES_LOCAL_STORAGE_NAME } from "./consts";
-import { Notes } from "@/shared/api";
+import { useLocalStorage } from "usehooks-ts";
 
 export const useNotesLocal = () => {
-    const [notes, setNotesState] = useState<Notes>([]);
+    const [notes, setNotes] = useLocalStorage<Notes | undefined>(NOTES_LOCAL_STORAGE_NAME, undefined);
 
-    const getLocalNotes = useCallback(
-        (): Notes => JSON.parse(localStorage.getItem(NOTES_LOCAL_STORAGE_NAME) || "[]"),
-        [],
-    );
-
-    const setLocalNotes = useCallback((notes: Notes) => {
-        localStorage.setItem(NOTES_LOCAL_STORAGE_NAME, JSON.stringify(notes));
-    }, []);
-
-    useEffect(() => {
-        setNotesState(getLocalNotes());
-    }, [getLocalNotes]);
-
-    return { notes, setLocalNotes };
+    return { notes, setNotes };
 };

@@ -1,2 +1,24 @@
 .NoteCard {
+    max-width: 186px;
+    width: 100%;
+    height: 186px;
+}
+
+.card {
+    width: 100%;
+
+    height: 100%;
+}
+
+.typography {
+    overflow: hidden;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.title {
+    height: 4em;
+}
+
+.text {
 }

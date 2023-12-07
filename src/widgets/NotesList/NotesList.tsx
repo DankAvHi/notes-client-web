@@ -1,27 +1,15 @@
 "use client";
 
 import styles from "./NotesList.module.css";
-import { useGetNotes, useNotesLocal } from "@/entities/note";
 import { List } from "./List";
+import { useNotesContext } from "@/app/providers";
 
 export const NotesList = () => {
-    const { data: cloudNotes, error, isLoading } = useGetNotes();
-    const { notes: localNotes } = useNotesLocal();
-
+    const { getNotes } = useNotesContext();
+    const notes = getNotes();
     return (
         <div className={styles.NotesList}>
-            <div className={styles.wrapper}>
-                {isLoading ? (
-                    `Загрузка`
-                ) : error ? (
-                    <p>{`Ошибка при загрузке облачных заметок`}</p>
-                ) : (
-                    <List notes={cloudNotes} title={`Облачные заметки`} />
-                )}
-            </div>
-            <div className={styles.wrapper}>
-                <List notes={localNotes} title={"Локальные заметки"} />
-            </div>
+            <List notes={notes || []} />
         </div>
     );
 };
