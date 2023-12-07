@@ -7,7 +7,10 @@ import typographyStyles from "@/shared/styles/themes/material/typography.module.
 import { useEditContext } from "./edit.provider";
 
 export const TopBar = () => {
-    const { note, exitEditor } = useEditContext();
+    const { note, setNote, exitEditor } = useEditContext();
+
+    const togglePinNote = () => setNote((prev) => ({ ...prev, pinned: !prev }));
+    const deleteNote = () => setNote((prev) => ({ ...prev, deleted: true }));
 
     return (
         <header className={styles.TopBar}>
@@ -18,13 +21,13 @@ export const TopBar = () => {
                 {note.title && note.title.length > 0 ? note.title : "Заголовок..."}
             </h2>
             <div className={styles.actions}>
-                <IconButton className={styles.action}>
+                <IconButton onClick={togglePinNote} className={styles.action}>
                     <PushPin className={styles.actionIcon} />
                 </IconButton>
                 <IconButton className={styles.action}>
                     <Attachment className={styles.actionIcon} />
                 </IconButton>
-                <IconButton className={styles.action}>
+                <IconButton onClick={deleteNote} className={styles.action}>
                     <DeleteForever className={styles.actionIcon} />
                 </IconButton>
             </div>
