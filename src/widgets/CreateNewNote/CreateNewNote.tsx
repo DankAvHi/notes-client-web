@@ -6,12 +6,7 @@ import { CreateIcon } from "@/shared/assets";
 
 export const CreateNewNote = () => {
     return (
-        <FAB
-            elementType="link"
-            href={{ pathname: `edit`, query: { id: `new` } }}
-            prefetch
-            className={styles.CreateNewNote}
-        >
+        <FAB elementType="link" href={`/edit/new`} prefetch className={styles.CreateNewNote}>
             <CreateIcon className={`${iconStyles.small}`} />
             <p className={`${typographyStyles["label-large"]}`}>{`Создать`}</p>
         </FAB>

@@ -9,7 +9,7 @@ export const NoteCard = (props: { note: Note }) => {
     const { content, title, id, pinned } = props.note;
 
     return (
-        <Button className={`${styles.NoteCard}`} elementType="link" href={{ pathname: `edit`, query: { id: id } }}>
+        <Button className={`${styles.NoteCard}`} elementType="link" href={`/edit/${id}`}>
             <Card className={`${styles.card}`}>
                 {pinned && <PushPin className={styles.pinned} />}
                 {title && title.length > 0 && (

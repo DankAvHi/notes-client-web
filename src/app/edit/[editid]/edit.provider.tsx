@@ -10,7 +10,7 @@ import {
     createContext,
     useCallback,
 } from "react";
-import { useNotesContext } from "../providers";
+import { useNotesContext } from "../../providers";
 import { useRouter } from "next/navigation";
 import { NoteCreateInput, NoteUpdateInput } from "@/entities/note";
 
@@ -50,8 +50,8 @@ export const EditProvider = (props: EditProviderPropsType) => {
             }
             if ((note.title && note.title.length > 0) || note.content.length > 0) {
                 props.isNew ? createNote(note) : updateNote(note as NoteUpdateInput);
-                return router.back();
             }
+            return router.push("/");
         },
         [note, props.isNew, createNote, updateNote, router],
     );
