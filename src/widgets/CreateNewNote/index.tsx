@@ -1,1 +1,1 @@
-export { CreateNewNote } from "./CreateNewNote";
+export { CreateNewNoteFAB } from "./CreateNewNoteFAB";
