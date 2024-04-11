@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { SWRProvider } from "./providers";
 // eslint-disable-next-line import/no-internal-modules
 import "@/shared/styles/index.css";
-import { NotesProvider } from "./providers/Notes.provider";
+import { Providers } from "./providers";
 
 const APP_NAME = "Заметки";
 const APP_DEFAULT_TITLE = "Заметки";
@@ -51,14 +50,12 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <SWRProvider>
-            <NotesProvider>
-                <html lang="ru">
-                    <body>
-                        <div id="root">{children}</div>
-                    </body>
-                </html>
-            </NotesProvider>
-        </SWRProvider>
+        <Providers>
+            <html lang="ru">
+                <body>
+                    <div id="root">{children}</div>
+                </body>
+            </html>
+        </Providers>
     );
 }

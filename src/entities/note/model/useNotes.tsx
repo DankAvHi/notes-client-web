@@ -13,7 +13,7 @@ export const useNotes = () => {
     const createNote = useCallback(
         async (newNote: NoteCreateInput) => {
             if (notes) {
-                const { title, content } = newNote;
+                const { title, content, attachments, pinned, deleted } = newNote;
                 const id = notes.length > 0 ? notes.reduce((prev, cur) => (cur.id > prev.id ? cur : prev)).id + 1 : 0;
                 const newDate = new Date();
                 const newTitle = isUndefiend(title) ? null : (title as string);
@@ -24,9 +24,9 @@ export const useNotes = () => {
                     content,
                     createdAt: newDate,
                     updatedAt: newDate,
-                    attachments: [],
-                    pinned: false,
-                    deleted: false,
+                    attachments,
+                    pinned,
+                    deleted,
                 };
 
                 setLocalNotes([...notes, note]);

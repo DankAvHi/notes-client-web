@@ -1,2 +1,2 @@
-export { SWRProvider } from "./SWR.provider";
-export { NotesProvider, useNotesContext } from "./Notes.provider";
+export { useNotesContext } from "./Notes.provider";
+export { Providers } from "./Providers.provider";
